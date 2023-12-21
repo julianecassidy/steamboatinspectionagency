@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1550" height="300" viewBox="0 0 1550 300">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 241.667px;
+        fill: #0d0106;
+        font-family: Fuggles;
+      }
+
+      .cls-2 {
+        font-size: 83.333px;
+        fill: #798071;
+        font-family: "Poiret One";
+      }
+    </style>
+  </defs>
+  <text id="Steamboat_Inspection_Agency" data-name="Steamboat Inspection Agency" class="cls-1" x="-9" y="151">Steamboat Inspection Agency</text>
+  <text id="adventures_of_a_curious_mind" data-name="adventures of a curious mind" class="cls-2" x="231" y="268">adventures of a curious mind</text>
+</svg>
