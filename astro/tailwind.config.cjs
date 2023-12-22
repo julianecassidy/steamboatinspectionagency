@@ -15,9 +15,15 @@ module.exports = {
     // if one breakpoint is not enough for you
     screens: {
       sm: "640px",
+      md:"1040px",
     },
-
     extend: {
+      colors: {
+          accent: withOpacity("--color-accent"),
+          fill: withOpacity("--color-fill"),
+          card: withOpacity("--color-card"),
+          border: withOpacity("--color-border")
+      },
       textColor: {
         skin: {
           base: withOpacity("--color-text-base"),
@@ -54,6 +60,10 @@ module.exports = {
         transparent: "transparent",
       },
       fontFamily: {
+        sans: ['"Poiret One"', "Arial", "sans-serif"],
+        serif: ["Vidaloka", "Georgia", "serif"],
+        display: ["Fuggles", "cursive"],
+        body: ["Raleway", "Arial", "sans-serif"],
         mono: ["IBM Plex Mono", "monospace"],
       },
 
@@ -66,6 +76,12 @@ module.exports = {
             code: {
               color: false,
             },
+            a: {
+              color: "#8B575C",
+              '&:hover': {
+                color: '#C98986',
+              },
+            }
           },
         },
       },

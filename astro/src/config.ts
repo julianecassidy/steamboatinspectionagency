@@ -18,7 +18,7 @@ export const LOCALE = {
 export const LOGO_IMAGE = {
   enable: true,
   svg: true,
-  width: 600,
+  width: 400,
   height: 46,
 };
 
@@ -33,7 +33,7 @@ export const SOCIALS: SocialObjects = [
     name: "Instagram",
     href: "https://instagram.com/steamboatinspectionagency",
     linkTitle: `${SITE.title} on Instagram`,
-    active: false,
+    active: true,
   },
   {
     name: "LinkedIn",
@@ -51,7 +51,7 @@ export const SOCIALS: SocialObjects = [
     name: "YouTube",
     href: "https://youtube.com/steamboatinspectionagency",
     linkTitle: `${SITE.title} on YouTube`,
-    active: false,
+    active: true,
   },
   {
     name: "Pinterest",

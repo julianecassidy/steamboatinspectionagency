@@ -1,0 +1,42 @@
+---
+import { SITE } from "@config";
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+---
+
+<Layout title={`Accessibility Statement | ${SITE.title}`}>
+  <Header />
+  <main id="main-content">
+    <div class="accessibility">
+      <h1>Accessibility Statement</h1>
+      <p>
+        SteamboatInspectionAgency.com is committed to making its website usable
+        by all people, regardless of technology or ability by meeting or
+        exceeding the requirements of the Web Content Accessibility Guidelines
+        2.0 Level AA (WCAG 2.0 AA).
+      </p>
+      <p>
+        Please be aware that our efforts are ongoing. If you need assistance in
+        using the processes found within this site, or have specific questions,
+        concerns, or suggestions about the accessibility of this site, please
+        contact us through the contact form.
+      </p>
+      <p>
+        If you do encounter an accessibility issue, please be sure to specify
+        the Web page and we will make all reasonable efforts to make that page
+        accessible.
+      </p>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .accessibility {
+    @apply md:mx-auto prose my-12 mx-6 sm:ml-12;
+  }
+  .accessibility h1 {
+    @apply text-center;
+  }
+</style>
