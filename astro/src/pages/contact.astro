@@ -1,0 +1,62 @@
+---
+import { SITE } from "@config";
+import { FAQS } from "../content/faqs.ts";
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+---
+
+<Layout title={`Contact | ${SITE.title}`}>
+  <Header />
+  <main id="main-content">
+    <div class="contact">
+      <h1>Contact</h1>
+      <div class="contact-content">
+        <div class="contact-info">
+            Interested in a partnership or want to collaborate with me? Send me a message!
+        </div>
+      <form name="contact" method="POST" data-netlify="true">
+        <p>
+          <label>Name: <input type="text" name="name" /></label>
+        </p>
+        <p>
+          <label>Email: <input type="email" name="email" /></label>
+        </p>
+        <p>
+          <label>Message: <textarea name="message"></textarea></label>
+        </p>
+        <p>
+          <button type="submit">Submit</button>
+        </p>
+      </form>
+    </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .contact {
+    @apply prose mx-6 my-12 sm:ml-12 md:mx-auto;
+  }
+  .contact h1 {
+    @apply text-center pb-6;
+  }
+  .contact-content {
+    @apply flex flex-wrap justify-center gap-12 sm:flex-nowrap;
+  }
+  .contact-info {
+    @apply w-full sm:w-1/4 pt-8;
+  }
+  .contact form {
+    @apply w-full;
+  }
+  .contact-content input, textarea {
+    @apply w-full bg-border/25 border-x-0 border-t-0 border-solid border-2 border-card/50 
+    focus-visible:outline-1 focus-visible:outline-card;
+  }
+  .contact-content button {
+    @apply block m-auto bg-border text-skin-base px-6 py-2 
+    transition ease-in duration-200 hover:bg-accent hover:text-fill;
+  }
+</style>

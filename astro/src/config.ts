@@ -71,4 +71,10 @@ export const SOCIALS: SocialObjects = [
     linkTitle: `${SITE.title} on TikTok`,
     active: false,
   },
+  {
+    name: "Medium",
+    href: "https://medium.com/julesharter",
+    linkTitle: `${SITE.title} on Medium`,
+    active: false,
+  },
 ];

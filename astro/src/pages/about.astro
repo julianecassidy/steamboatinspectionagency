@@ -1,0 +1,49 @@
+---
+import { SITE } from "@config";
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+---
+
+<Layout title={`About the Author | ${SITE.title}`}>
+  <Header />
+  <main id="main-content">
+    <div class="about prose">
+      <h1>About</h1>
+      <div class="about-body">
+        <img src="/profile.jpg" />
+        <div class="about-text">
+          <p>
+            Use justify-evenly to justify items along the container’s main axis
+            such that there is an equal amount of space around each item, but
+            also accounting for the doubling of space you would normally see
+            between each item when using justify-around:
+          </p>
+           Use justify-evenly to justify items along the container’s main axis
+          such that there is an equal amount of space around each item, but also
+          accounting for the doubling of space you would normally see between
+          each item when using justify-around:
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+<Footer />
+
+<style>
+  .about {
+    @apply prose mx-6 my-12 sm:ml-12 md:mx-auto;
+  }
+  .about h1 {
+    @apply text-center;
+  }
+  .about-body {
+    @apply flex flex-wrap justify-around gap-x-8 sm:flex-nowrap;
+  }
+  .about-body img {
+    @apply w-full sm:w-2/5 md:w-5/12;
+  }
+  .about-text {
+    @apply -mt-5;
+  }
+</style>

@@ -27,4 +27,5 @@ export type SocialMedia =
   | "YouTube"
   | "Pinterest"
   | "TikTok"
-  | "Tumblr";
+  | "Tumblr"
+  | "Medium";
