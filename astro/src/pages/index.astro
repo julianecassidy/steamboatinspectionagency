@@ -21,11 +21,11 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
 <Layout>
   <Header />
-  <main id="main-content" class="prose">
+  <main id="main-content">
     {
       featuredPosts.length > 0 && (
         <>
-          <section id="featured">
+          <section id="featured"  class="prose">
             <h2>featured posts</h2>
             <ul>
               {featuredPosts.map(({ data }) => (
@@ -49,24 +49,29 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       )
     }
 
-    <section id="about">
+    <section id="about" class="prose">
       <h2>about</h2>
       <img src="./profile.jpg" />
-      <p>
-        AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
-        blog theme. This theme follows best practices and provides accessibility
-        out of the box. Light and dark mode are supported by default. Moreover,
-        additional color schemes can also be configured.
-      </p>
-      <a href="/about">read more</a>
+      <div class="about-content">
+        <p>
+          AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
+          blog theme. This theme follows best practices and provides accessibility
+          out of the box. Light and dark mode are supported by default. Moreover,
+          additional color schemes can also be configured.
+        </p>
+        <p class="text-center w-full sm:w-42 md:w-full")>
+          <a href="/about">read more</a>
+        </p>
       {
         // only display if at least one social link is enabled
         socialCount > 0 && (
           <div class="social-wrapper">
+            <b>find me around:</b>
             <Socials />
           </div>
         )
       }
+      </div>
     </section>
 
     <section id="budget">
@@ -87,7 +92,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       </div>
     </section>
 
-    <section id="recent-posts">
+    <section id="recent-posts" class="prose max-width-none">
       <h2>recent posts</h2>
       <ul>
         {
@@ -117,13 +122,13 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       </div>
     </section>
     <section id="categories">
-      <div id="eat">eat</div>
-      <div id="eat">eat</div>
-      <div id="eat">eat</div>
-      <div id="eat">eat</div>
-      <div id="eat">eat</div>
-      <div id="eat">eat</div>
-      <div id="eat">eat</div>
+      <a href="/tags/eat"><div id="eat">eat</div></a>
+      <a href="/tags/garden"><div id="garden">garden</div></a>
+      <a href="/tags/build"> <div id="build">build</div></a>
+      <a href="/tags/create"><div id="create">create</div></a>
+      <a href="/tags/travel"><div id="travel">travel</div></a>
+      <a href="/tags/money"><div id="money">spend/save</div></a>
+      <a href="/tags/rest"><div id="rest">rest</div></a>
     </section>
     <section id="products">
       <h2>things I like</h2>
@@ -134,34 +139,39 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 </Layout>
 
 <style>
-  /* ===== Hero Section ===== */
-  #hero {
-    @apply pb-6 pt-8;
+  /* ===== Main Content ===== */
+  #main-content {
+    @apply flex flex-wrap w-full box-content;
   }
-  #hero h1 {
-    @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
-  }
-
-  #hero p {
-    @apply my-2;
-  }
-  .social-wrapper {
-    @apply mt-4 flex flex-col sm:flex-row sm:items-center;
-  }
-  .social-links {
-    @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
-  }
-
   /* ===== Featured & Recent Posts Sections ===== */
   #featured,
   #recent-posts {
-    @apply pb-6 pt-12;
+    @apply pb-6 pt-12 w-full sm:ml-12 md:max-w-3xl md:mx-16;
   }
   #featured h2,
   #recent-posts h2 {
     @apply text-2xl font-semibold tracking-wide;
   }
   .all-posts-btn-wrapper {
-    @apply my-8 text-center;
+    @apply my-4 text-center;
+  }
+  /* ===== About Section ===== */
+  #about {
+    @apply flex flex-wrap bg-border/50 pb-4 sm:max-w-none sm:my-4 md:bg-fill md:w-1/5 md:mx-4;
+  }
+  #about h2 {
+    @apply w-full my-4 inline-block text-xl text-center sm:my-8 sm:text-2xl;
+  }
+  #about img {
+    @apply w-48 sm:w-52 md:ml-0 md:w-60;
+  }
+  .about-content {
+    @apply mt-2 mb-4 sm:w-7/12 md:w-full;
+  }
+  .social-wrapper {
+    @apply mt-2 w-full flex flex-col justify-center items-center;
+  }
+  .social-links {
+    @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
   }
 </style>
