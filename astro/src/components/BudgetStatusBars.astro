@@ -1,0 +1,68 @@
+---
+import LinkButton from "@components/LinkButton.astro";
+
+const GROCERY_SPENT = 45;
+const RESTAURANT_SPENT = 0;
+
+const groceryPercent = Math.round((GROCERY_SPENT/2400) * 100);
+const restaurantPercent = Math.round((RESTAURANT_SPENT/2400) * 100);
+---
+
+<div id="budget" class="prose">
+  <h3>2024 food budget</h3>
+  <div id="groceries">
+    <p class="text-2xl md:text-xl">groceries</p>
+    <p class="invisible text-right sm:visible md:text-sm">
+      ${GROCERY_SPENT} / $2400
+    </p>
+    <div class="bar">
+      <div id="grocery-status" style={{ width: `${groceryPercent}%` }}></div>
+    </div>
+  </div>
+  <div id="restaurants">
+    <p class="text-2xl md:text-xl">eating out</p>
+    <p class="invisible text-right sm:visible sm:visible md:text-sm">${RESTAURANT_SPENT} / $2400</p>
+    <div class="bar">
+      <div id="restaurant-status" style={{ width: `${restaurantPercent}%` }}></div>
+    </div>
+  </div>
+  <div class="budget-btn-wrapper">
+    <LinkButton href="/posts/2024-food-budget">
+      read more about the project
+      <svg xmlns="http://www.w3.org/2000/svg"
+        ><path
+          d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
+        ></path>
+      </svg>
+    </LinkButton>
+  </div>
+</div>
+
+<style>
+  #budget {
+    @apply flex flex-wrap justify-center py-4;
+  }
+  #budget h3,
+  p {
+    @apply w-full;
+  }
+  #budget h3 {
+    @apply text-center text-2xl;
+  }
+  #budget p {
+    @apply inline-block w-2/5 mt-2 font-sans md:mb-8;
+  }
+  #groceries, #restaurants {
+    @apply ml-8 -mt-4 pt-4 w-full sm:pt-0 sm:ml-32 sm:mt-4 md:-ml-10 md:-mr-20;
+  }
+  .bar {
+    @apply h-10 w-5/6 -mt-9 border-2 border-dotted border-card;
+  }
+  #grocery-status,
+  #restaurant-status {
+    @apply ml-1 mr-1 mt-1 h-7 bg-accent;
+  }
+  .budget-btn-wrapper {
+    @apply mt-8 flex w-full justify-center text-center;
+  }
+</style>

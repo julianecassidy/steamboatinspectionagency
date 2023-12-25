@@ -10,6 +10,8 @@ import Socials from "@components/Socials.astro";
 import getSortedPosts from "@utils/getSortedPosts";
 import slugify from "@utils/slugify";
 import { SOCIALS } from "@config";
+import BudgetStatusBars from "@components/BudgetStatusBars.astro";
+import Categories from "@components/Categories.astro";
 
 const posts = await getCollection("blog");
 
@@ -17,15 +19,16 @@ const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 
 const socialCount = SOCIALS.filter(social => social.active).length;
+
 ---
 
 <Layout>
   <Header />
   <main id="main-content">
-    {
+    <!-- {
       featuredPosts.length > 0 && (
         <>
-          <section id="featured"  class="prose">
+          <section id="recent"  class="prose">
             <h2>featured posts</h2>
             <ul>
               {featuredPosts.map(({ data }) => (
@@ -47,52 +50,9 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           </section>
         </>
       )
-    }
+    } -->
 
-    <section id="about" class="prose">
-      <h2>about</h2>
-      <img src="./profile.jpg" />
-      <div class="about-content">
-        <p>
-          AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
-          blog theme. This theme follows best practices and provides accessibility
-          out of the box. Light and dark mode are supported by default. Moreover,
-          additional color schemes can also be configured.
-        </p>
-        <p class="text-center w-full sm:w-42 md:w-full")>
-          <a href="/about">read more</a>
-        </p>
-      {
-        // only display if at least one social link is enabled
-        socialCount > 0 && (
-          <div class="social-wrapper">
-            <b>find me around:</b>
-            <Socials />
-          </div>
-        )
-      }
-      </div>
-    </section>
-
-    <section id="budget">
-      <h3>2024 food budget</h3>
-      <p>groceries</p>
-      <div id="grocery-bar"></div>
-      <p>eating out</p>
-      <div id="restaurant-bar"></div>
-      <div class="budget-btn-wrapper">
-        <LinkButton href="/posts">
-          read more about the project
-          <svg xmlns="http://www.w3.org/2000/svg"
-            ><path
-              d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
-            ></path>
-          </svg>
-        </LinkButton>
-      </div>
-    </section>
-
-    <section id="recent-posts" class="prose max-width-none">
+        <section id="recent-posts" class="prose order-1 max-width-none">
       <h2>recent posts</h2>
       <ul>
         {
@@ -121,18 +81,76 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         </LinkButton>
       </div>
     </section>
-    <section id="categories">
-      <a href="/tags/eat"><div id="eat">eat</div></a>
-      <a href="/tags/garden"><div id="garden">garden</div></a>
-      <a href="/tags/build"> <div id="build">build</div></a>
-      <a href="/tags/create"><div id="create">create</div></a>
-      <a href="/tags/travel"><div id="travel">travel</div></a>
-      <a href="/tags/money"><div id="money">spend/save</div></a>
-      <a href="/tags/rest"><div id="rest">rest</div></a>
+
+    <section id="about" class="prose order-2">
+      <h2>about</h2>
+      <img src="./profile.jpg" />
+      <div class="about-content">
+        <p>
+          AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
+          blog theme. This theme follows best practices and provides accessibility
+          out of the box. Light and dark mode are supported by default. Moreover,
+          additional color schemes can also be configured.
+        </p>
+        <p class="text-center w-full sm:w-42 md:w-full")>
+          <LinkButton href="/about">
+            read more about me
+            <svg xmlns="http://www.w3.org/2000/svg"
+              ><path
+                d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
+              ></path>
+            </svg>
+          </LinkButton>
+        </p>
+      {
+        // only display if at least one social link is enabled
+        socialCount > 0 && (
+          <div class="social-wrapper">
+            <b>find me around:</b>
+            <Socials />
+          </div>
+        )
+      }
+      </div>
     </section>
-    <section id="products">
+    <section id="home-budget" class="order-3 md:order-4">
+      <BudgetStatusBars>
+    </section>
+    <!-- <section id="recent-posts" class="prose max-width-none">
+      <h2>recent posts</h2>
+      <ul>
+        {
+          sortedPosts
+            .filter(({ data }) => !data.featured)
+            .map(
+              ({ data }, index) =>
+                index < 4 && (
+                  <Card
+                    href={`/posts/${slugify(data)}`}
+                    frontmatter={data}
+                    secHeading={false}
+                  />
+                )
+            )
+        }
+      </ul>
+      <div class="all-posts-btn-wrapper">
+        <LinkButton href="/posts">
+          All Posts
+          <svg xmlns="http://www.w3.org/2000/svg"
+            ><path
+              d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
+            ></path>
+          </svg>
+        </LinkButton>
+      </div>
+    </section> -->
+    <section id="home-categories" class="order-4 md:order-3">
+      <Categories />
+    </section>
+    <!-- <section id="products" class="order-5">
       <h2>things I like</h2>
-    </section>
+    </section> -->
   </main>
 
   <Footer />
@@ -150,14 +168,14 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   }
   #featured h2,
   #recent-posts h2 {
-    @apply text-2xl font-semibold tracking-wide;
+    @apply text-3xl font-semibold tracking-wide;
   }
   .all-posts-btn-wrapper {
     @apply my-4 text-center;
   }
   /* ===== About Section ===== */
   #about {
-    @apply flex flex-wrap bg-border/50 pb-4 sm:max-w-none sm:my-4 md:bg-fill md:w-1/5 md:mx-4;
+    @apply flex flex-wrap bg-border/50 pb-4 sm:max-w-none sm:my-4 md:bg-fill md:w-[22%] md:mx-4;
   }
   #about h2 {
     @apply w-full my-4 inline-block text-xl text-center sm:my-8 sm:text-2xl;
@@ -174,4 +192,17 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   .social-links {
     @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
   }
+  /* ===== Budget Section ===== */
+  #home-budget {
+    @apply w-full bg-fill sm:ml-4 md:w-[22%];
+  }
+  /* ===== Category Section ===== */
+  #home-categories {
+    @apply pb-6 pt-12 w-full sm:ml-12 md:max-w-3xl md:mx-16;
+  }  
+  /* ===== Product Section ===== */
+  #products {
+    @apply w-full;
+  }
+
 </style>

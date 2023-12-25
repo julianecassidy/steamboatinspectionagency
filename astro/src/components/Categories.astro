@@ -1,0 +1,49 @@
+---
+---
+
+<div id="categories" class="prose">
+    <h2>categories</h2>
+    <a href="/tags/eat" class="w-5/12 md:w-7/12"><div id="eat">eat</div></a>
+    <a href="/tags/garden" class="w-6/12 md:w-4/12"><div id="garden">garden</div></a>
+    <a href="/tags/build" class="w-6/12 md:w-5/12"><div id="build">build</div></a>
+    <a href="/tags/create" class="w-5/12 md:w-6/12"><div id="create">create</div></a>
+    <a href="/tags/money" class="w-full mx-2 sm:mx-3.5 md:mx-4"><div id="money">spend/save</div></a>
+    <a href="/tags/travel" class="w-7/12"><div id="travel">travel</div></a>
+    <a href="/tags/rest" class="w-4/12"><div id="rest">rest</div></a>
+</div>
+
+<style>
+    #categories {
+        @apply flex flex-wrap justify-center gap-x-4 gap-y-4 mb-8;
+    }
+    #categories h2 {
+        @apply w-full text-center text-3xl;
+    }
+    #categories div {
+        @apply flex justify-center items-center h-32;
+    }
+    #categories a {
+        @apply no-underline hover:no-underline;
+    }
+    #eat {
+        @apply bg-accent text-fill text-4xl font-sans duration-100 ease-in hover:rotate-6;
+    }
+    #garden {
+        @apply bg-border text-skin-base text-4xl font-sans duration-100 ease-in hover:rotate-6;
+    }
+    #build {
+        @apply bg-fill text-skin-base border-2 border-border text-4xl font-sans duration-100 ease-in hover:rotate-6;
+    }
+    #create {
+        @apply bg-muted text-fill text-7xl font-display duration-100 ease-in hover:rotate-6;
+    }
+    #travel {
+        @apply bg-card text-fill text-7xl font-display duration-100 ease-in hover:rotate-6;
+    }
+    #money {
+        @apply bg-border text-skin-base text-4xl font-sans duration-100 ease-in hover:rotate-6;
+    }
+    #rest {
+        @apply bg-accent text-fill text-4xl font-sans duration-100 ease-in hover:rotate-6;
+    }
+</style>

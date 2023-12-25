@@ -22,7 +22,8 @@ module.exports = {
           accent: withOpacity("--color-accent"),
           fill: withOpacity("--color-fill"),
           card: withOpacity("--color-card"),
-          border: withOpacity("--color-border")
+          border: withOpacity("--color-border"),
+          muted: withOpacity("--color-card-muted")
       },
       textColor: {
         skin: {
