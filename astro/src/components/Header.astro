@@ -75,7 +75,7 @@ const { activeNav } = Astro.props;
       <ul id="menu-items" class="display-none sm:flex">
         <li>
           <a
-            href="/categories/eat"
+            href="/tags/eat"
             class={activeNav === "eat" ? "active" : ""}
           >
             eat
@@ -83,7 +83,7 @@ const { activeNav } = Astro.props;
         </li>
         <li>
           <a
-            href="/categories/garden"
+            href="/tags/garden"
             class={activeNav === "garden" ? "active" : ""}
           >
             garden
@@ -91,7 +91,7 @@ const { activeNav } = Astro.props;
         </li>
         <li>
           <a
-            href="/categories/build"
+            href="/tags/build"
             class={activeNav === "build" ? "active" : ""}
           >
             build
@@ -99,7 +99,7 @@ const { activeNav } = Astro.props;
         </li>
         <li>
           <a
-            href="/categories/create"
+            href="/tags/create"
             class={activeNav === "create" ? "active" : ""}
           >
             create
@@ -107,7 +107,7 @@ const { activeNav } = Astro.props;
         </li>
         <li>
           <a
-            href="/categories/travel"
+            href="/tags/travel"
             class={activeNav === "travel" ? "active" : ""}
           >
             travel
@@ -115,7 +115,7 @@ const { activeNav } = Astro.props;
         </li>
         <li>
           <a
-            href="/categories/money"
+            href="/tags/money"
             class={activeNav === "spend/save" ? "active" : ""}
           >
             spend/save
@@ -123,7 +123,7 @@ const { activeNav } = Astro.props;
         </li>
         <li>
           <a
-            href="/categories/rest"
+            href="/tags/rest"
             class={activeNav === "rest" ? "active" : ""}
           >
             rest
@@ -176,7 +176,7 @@ const { activeNav } = Astro.props;
         </li>
         <li>
           <a
-            href="/categories"
+            href="/tags"
             class={activeNav === "categories" ? "active" : ""}
           >
             categories
@@ -296,7 +296,6 @@ const { activeNav } = Astro.props;
   #theme-btn svg {
     @apply scale-125 hover:rotate-12 sm:scale-100;
   }
-
   .menu-icon line {
     @apply transition-opacity duration-75 ease-in-out;
   }

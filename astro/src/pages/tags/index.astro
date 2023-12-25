@@ -2,9 +2,11 @@
 import { getCollection } from "astro:content";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+import Hr from "@components/Hr.astro";
 import Layout from "@layouts/Layout.astro";
 import Main from "@layouts/Main.astro";
 import Tag from "@components/Tag.astro";
+import Categories from "@components/Categories.astro";
 import getUniqueTags from "@utils/getUniqueTags";
 import { SITE } from "@config";
 
@@ -13,12 +15,24 @@ const posts = await getCollection("blog");
 let tags = getUniqueTags(posts);
 ---
 
-<Layout title={`Tags | ${SITE.title}`}>
-  <Header activeNav="tags" />
-  <Main pageTitle="Tags" pageDesc="All the tags used in posts.">
+<Layout title={`Categories | ${SITE.title}`}>
+  <Header activeNav="categories" />
+  <Main pageTitle="Explore" pageDesc="Looking for something in particular? Just browsing? Start with the categories below.">
+    <Categories />
+    <Hr />
+    <h3>Other Topics</h3>
     <ul>
       {tags.map(tag => <Tag name={tag} size="lg" />)}
     </ul>
   </Main>
   <Footer />
 </Layout>
+
+<style>
+  h3 {
+    @apply py-8 text-xl font-serif italic text-center sm:text-2xl;
+  }
+  ul {
+    @apply flex flex-wrap justify-center;
+  }
+</style>

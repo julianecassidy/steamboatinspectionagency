@@ -146,6 +146,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       </div>
     </section> -->
     <section id="home-categories" class="order-4 md:order-3">
+      <h2>categories</h2>
       <Categories />
     </section>
     <!-- <section id="products" class="order-5">
@@ -199,7 +200,10 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   /* ===== Category Section ===== */
   #home-categories {
     @apply pb-6 pt-12 w-full sm:ml-12 md:max-w-3xl md:mx-16;
-  }  
+  } 
+  #home-categories h2 {
+        @apply w-full font-semibold text-center text-3xl pb-6;
+    } 
   /* ===== Product Section ===== */
   #products {
     @apply w-full;

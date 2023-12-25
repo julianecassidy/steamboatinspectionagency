@@ -23,33 +23,33 @@ const { noMarginTop = false } = Astro.props;
       <h2>find me elsewhere</h2>
       <Socials />
     </div>
-    <div class="copyright-wrapper">
-      <div>
-        <span><a href="/privacy-policy">Privacy Policy</a></span> 
-        <span class="separator">&nbsp;|&nbsp;</span>
-        <span><a href="/accessibility">Accessibility Statement</a></span>
-      </div>
-      <div>
-        <span>Copyright &#169; {currentYear}</span>
-        <br>
-        <span>Website design by <a href="https://julianecassidy.com">Juliane Cassidy</a></span>
-      </div>
+  </div>
+  <div class="footer-info-wrapper">
+    <div>
+      <span><a href="/privacy-policy">Privacy Policy</a></span> 
+      <span class="separator">&nbsp;|&nbsp;</span>
+      <span><a href="/accessibility">Accessibility Statement</a></span>
     </div>
+  </div>
+  <div class="copyright-wrapper">
+    <span>Copyright &#169; {currentYear}</span>
+    <br>
+    <span>Website design by <a href="https://julianecassidy.com">Juliane Cassidy</a></span>
   </div>
 </footer>
 
 <style>
   footer {
-    @apply w-full;
+    @apply max-w-full px-0 mx-0;
   }
   .footer-wrapper {
-    @apply flex flex-wrap items-center justify-between py-6 sm:py-4;
+    @apply flex flex-wrap w-3/4 mx-auto items-center justify-between pt-6 sm:pt-4 md:ml-48;
   }
   .footer-wrapper h2 {
     @apply text-xl w-full text-center;
   }
   .footer-wrapper a {
-    @apply text-skin-accent hover:text-card px-3 transition hover:duration-75;
+    @apply text-skin-accent hover:text-muted px-3 transition hover:duration-75;
   }
   .footer-nav {
     @apply flex w-full flex-wrap gap-y-3 items-center justify-center sm:w-1/2;
@@ -63,12 +63,18 @@ const { noMarginTop = false } = Astro.props;
   .link-button svg {
     @apply scale-125;
   }
-  .copyright-wrapper {
-    @apply mt-8 mb-6 flex flex-wrap w-full flex-col items-center justify-center text-center;
+  .footer-info-wrapper {
+    @apply mt-8 flex flex-wrap w-full flex-col items-center justify-center text-center;
   }
-  /* .copyright-wrapper span {
-    @apply
-  } */
+  .copyright-wrapper {
+    @apply mt-4 pb-4 w-full text-fill text-center block justify-start bg-skin-accent pl-4 pt-4 sm:pb-6;
+  }
+  .copyright-wrapper span {
+    @apply w-full;
+  }
+  .copyright-wrapper a {
+    @apply text-card hover:text-border;
+  }
   .separator {
     @apply inline;
   }
