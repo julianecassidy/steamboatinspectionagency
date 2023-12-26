@@ -1,5 +1,5 @@
 import blockContent from './blockContent'
-import category from './category'
+import category from './tag'
 import post from './post'
 import author from './author'
 

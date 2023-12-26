@@ -4,21 +4,23 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Tag from "@components/Tag.astro";
 import Datetime from "@components/Datetime";
-import type { CollectionEntry } from "astro:content";
+// import type { CollectionEntry } from "astro:content";
+import SanityPortableText from '../components/SanityPortableText.astro'
+import { getSanityImageURL } from '../utils/helpers.js'
 import { slugifyStr } from "@utils/slugify";
 
 export interface Props {
-  post: CollectionEntry<"blog">;
+  post: any;
 }
 
 const { post } = Astro.props;
 
-const { title, author, description, ogImage, canonicalURL, pubDatetime, tags } =
+const { title, author, description, mainImage, canonical, publishedAt, tags } =
   post.data;
 
 const { Content } = await post.render();
 
-const ogImageUrl = typeof ogImage === "string" ? ogImage : ogImage?.src;
+const ogImageUrl = typeof mainImage === "string" ? mainImage : mainImage?.src;
 const ogUrl = new URL(
   ogImageUrl ?? `/posts/${slugifyStr(title)}.png`,
   Astro.url.origin
@@ -30,7 +32,7 @@ const ogUrl = new URL(
   author={author}
   description={description}
   ogImage={ogUrl}
-  canonicalURL={canonicalURL}
+  canonicalURL={canonical}
 >
   <Header />
   <div class="mx-auto flex w-full max-w-3xl justify-start px-2">
@@ -47,13 +49,15 @@ const ogUrl = new URL(
   </div>
   <main id="main-content">
     <h1 transition:name={slugifyStr(title)} class="post-title">{title}</h1>
-    <Datetime datetime={pubDatetime} size="lg" className="my-2" />
+    <Datetime datetime={publishedAt} size="lg" className="my-2" />
+    {post.mainImage && <img class="post-main__img" loading="lazy" src={getSanityImageURL(post.mainImage).url()} />}
     <article id="article" role="article" class="prose mx-auto mt-8 max-w-3xl">
-      <Content />
+      <SanityPortableText portableText={post.body} />
+      <!-- <Content /> -->
     </article>
 
     <ul class="my-8">
-      {tags.map(tag => <Tag name={slugifyStr(tag)} />)}
+      {tags.map((tag:string) => {<Tag name={slugifyStr(tag)} />})}
     </ul>
     <div class="flex justify-end">
       <button
