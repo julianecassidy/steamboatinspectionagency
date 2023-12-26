@@ -20,7 +20,7 @@ let tags = getUniqueTags(posts);
   <Main pageTitle="Explore" pageDesc="Looking for something in particular? Just browsing? Start with the categories below.">
     <Categories />
     <Hr />
-    <h3>Other Topics</h3>
+    <h2>Other Topics</h2>
     <ul>
       {tags.map(tag => <Tag name={tag} size="lg" />)}
     </ul>
@@ -29,8 +29,8 @@ let tags = getUniqueTags(posts);
 </Layout>
 
 <style>
-  h3 {
-    @apply py-8 text-xl font-serif italic text-center sm:text-2xl;
+  h2 {
+    @apply py-8 text-xl font-serif text-center sm:text-2xl;
   }
   ul {
     @apply flex flex-wrap justify-center;
