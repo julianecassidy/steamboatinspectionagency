@@ -8,13 +8,26 @@ import Card from "@components/Card";
 import LinkButton from "@components/LinkButton.astro";
 import slugify from "@utils/slugify";
 // import type { CollectionEntry } from "astro:content";
-import SanityPortableText from './SanityPortableText.astro'
-import { getSanityImageURL, formatBlogPostDate } from '../utils/helpers.js'
+import { getSanityImageURL } from '../utils/helpers.js'
 
 export interface Props {
   pageNum: number;
   totalPages: number;
   posts: [];
+}
+
+export interface Post {
+title: string,
+  slug: string,
+  author: string,
+  mainImage: string,
+  tags: [],
+  tagData: [],
+  publishedAt: string,
+  featured: boolean,
+  body: string,
+  description: any,
+  _id: string,
 }
 
 const { pageNum, totalPages, posts } = Astro.props;
@@ -28,7 +41,7 @@ const next = pageNum < totalPages ? "" : "disabled";
   <Main pageTitle="Posts" pageDesc="All the articles I've posted.">
     <ul>
       {
-        posts.map(post => (
+        posts.map((post:Post) => (
           <Card href={`/posts/${post.slug}`} frontmatter={post} />
           // <p>{post.title} {post.description.current}</p>
         ))

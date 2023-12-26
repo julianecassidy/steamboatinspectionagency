@@ -1,8 +1,9 @@
 import { useSanityClient } from "astro-sanity";
 
 export async function getAllPosts() {
-  const query = `*[_type == 'post']{"tagData": tags[]->{slug, title},author -> {name}, ...} | order(publishedAt desc)`;
+  const query = `*[_type == 'post']{"tagData": tags[]->{title},author -> {name},"mainImage": mainImage.asset->{url}, ...} | order(publishedAt desc)`;
   const data = await useSanityClient().fetch(query);
+  console.log("data", data[0].mainImage);
   return data;
 }
 

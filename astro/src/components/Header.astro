@@ -17,7 +17,8 @@ export interface Props {
     | "about"
     | "categories"
     | "contact"
-    | "faqs";
+    | "faqs"
+    | "blog";
 }
 
 const { activeNav } = Astro.props;
@@ -73,6 +74,14 @@ const { activeNav } = Astro.props;
         </svg>
       </button>
       <ul id="menu-items" class="display-none sm:flex">
+        <li>
+          <a
+            href="/posts"
+            class={activeNav === "blog" ? "active" : ""}
+          >
+            blog
+          </a>
+        </li>
         <li>
           <a
             href="/tags/eat"
@@ -172,6 +181,14 @@ const { activeNav } = Astro.props;
         <li>
           <a href="/about" class={activeNav === "about" ? "active" : ""}>
             about
+          </a>
+        </li>
+        <li>
+          <a
+            href="/posts"
+            class={activeNav === "blog" ? "active" : ""}
+          >
+            categories
           </a>
         </li>
         <li>

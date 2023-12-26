@@ -12,3 +12,20 @@ const builder = createImageBuilder(useSanityClient());
 export function getSanityImageURL(source) {
   return builder.image(source);
 }
+
+export function formatPostData(posts) {
+  return posts.map((post) => {
+    return {
+        title: post.title,
+        slug: post.slug.current,
+        description: post.description[0].children[0].text,
+        tags: post.tagData.map(tag => tag.title),
+        author: post.author,
+        body: post.body,
+        featured: post.featured,
+        publishedAt: post.publishedAt,
+        id: post._id,
+        mainImage: post.mainImage,
+    }
+})
+}

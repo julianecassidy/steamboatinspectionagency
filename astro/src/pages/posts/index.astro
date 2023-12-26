@@ -3,26 +3,14 @@ import { SITE } from "@config";
 import Posts from "@layouts/Posts.astro";
 import getSortedPosts from "@utils/getSortedPosts";
 import getPageNumbers from "@utils/getPageNumbers";
-import { getAllPosts } from '../../lib/api.js';
+import { getAllPosts } from "lib/api";
+import { formatPostData } from "@utils/helpers.js";
 
 // import { getCollection } from "astro:content";
 
-let posts = await getAllPosts();
-posts = posts.map((post) => {
-    return {
-        title: post.title,
-        slug: post.slug.current,
-        description: post.description[0].children[0].text,
-        tags: post.tags,
-        tagData: post.tagData,
-        author: post.author,
-        body: post.body,
-        featured: post.featured,
-        publishedAt: post.publishedAt,
-        id: post._id,
-    }
-})
-console.log(posts[0]);
+const posts = formatPostData(await getAllPosts());
+// posts = formatPostData(posts);
+// console.log(posts[0]);
 // const sortedPosts = getSortedPosts(posts);
 
 const totalPages = getPageNumbers(posts.length);
