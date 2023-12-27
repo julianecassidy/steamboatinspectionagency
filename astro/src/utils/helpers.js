@@ -3,6 +3,8 @@ import { useSanityClient, createImageBuilder} from 'astro-sanity';
 
 const builder = createImageBuilder(useSanityClient());
 
+// NOTE: this functionality is currently handled with Datetime where the date is
+// rendered on the page.
 // export function formatBlogPostDate(date) {
 //   const dateString = parseISO(date, 'YYYY/MM/Do');
 //   const formattedDateString = format(dateString, 'MMMM do, yyyy');

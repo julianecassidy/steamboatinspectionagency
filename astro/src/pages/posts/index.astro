@@ -6,12 +6,8 @@ import getPageNumbers from "@utils/getPageNumbers";
 import { getAllPosts } from "lib/api";
 import { formatPostData } from "@utils/helpers.js";
 
-// import { getCollection } from "astro:content";
 
 const posts = formatPostData(await getAllPosts());
-// posts = formatPostData(posts);
-// console.log(posts[0]);
-// const sortedPosts = getSortedPosts(posts);
 
 const totalPages = getPageNumbers(posts.length);
 

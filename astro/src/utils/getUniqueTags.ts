@@ -1,5 +1,4 @@
 import { slugifyStr } from "./slugify";
-// import type { CollectionEntry } from "astro:content";
 
 export interface Post {
     title: string,
@@ -15,9 +14,7 @@ export interface Post {
     _id: string,
 }
 
-
 const getUniqueTags = (posts: Post[]) => {
-  console.log(posts);
   const tags: string[] = posts
     .flatMap(post => post.tags)
     .map(tag => slugifyStr(tag))
