@@ -1,5 +1,6 @@
 import { slugifyStr } from "@utils/slugify";
 import Datetime from "./Datetime";
+import { getSanityImageURL } from "@utils/helpers";
 
 export interface Props {
   href?: string;
@@ -7,32 +8,36 @@ export interface Props {
     title: string,
     publishedAt: string,
     description: string,
+    mainImage: string
   };
   secHeading?: boolean;
 }
 
 export default function Card({ href, frontmatter, secHeading = true }: Props) {
-  const { title, publishedAt, description } = frontmatter;
+  const { title, publishedAt, mainImage, description } = frontmatter;
 
   const headerProps = {
     style: { viewTransitionName: slugifyStr(title) },
-    className: "text-lg font-medium decoration-dashed hover:underline",
+    className: "text-xl font-body not-italic text-center no-underline mt-4 -mb-1",
   };
 
   return (
-    <li className="my-6">
       <a
         href={href}
-        className="inline-block text-lg font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
+        className="inline-block text-lg font-body text-skin-accent no-underline"
       >
+      <div className="w-64 h-128 bg-card/20 sm:w-72">
+        <img src={getSanityImageURL(mainImage).width(288).height(240).fit("crop").url()} />
         {secHeading ? (
           <h2 {...headerProps}>{title}</h2>
         ) : (
           <h3 {...headerProps}>{title}</h3>
         )}
-      </a>
+        <span className="flex justify-center -mt-3">
       <Datetime datetime={publishedAt} />
-      <p>{description}</p>
-    </li>
+        </span>
+      <p className="mt-0.5 px-2 pb-2">{description}</p>
+      </div>
+      </a>
   );
 }

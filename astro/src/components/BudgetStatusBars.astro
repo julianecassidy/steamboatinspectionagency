@@ -40,27 +40,26 @@ const restaurantPercent = Math.round((RESTAURANT_SPENT/2400) * 100);
 
 <style>
   #budget {
-    @apply flex flex-wrap justify-center py-4;
+    @apply flex flex-wrap justify-start pt-4 md:pt-0;
   }
-  #budget h3,
-  p {
+  #budget h3, p {
     @apply w-full;
   }
   #budget h3 {
-    @apply text-center text-2xl;
+    @apply text-center text-lg sm:pl-3 md:pl-0;
   }
   #budget p {
-    @apply inline-block w-2/5 mt-2 font-sans md:mb-8;
+    @apply inline-block w-2/5 mt-2 font-sans text-sm md:mb-8;
   }
   #groceries, #restaurants {
-    @apply ml-8 -mt-4 pt-4 w-full sm:pt-0 sm:ml-32 sm:mt-4 md:-ml-10 md:-mr-20;
+    @apply ml-8 -mt-4 pt-4 w-full sm:pt-0 sm:ml-32 sm:mt-2 md:ml-4 md:-mr-28;
   }
   .bar {
-    @apply h-10 w-5/6 -mt-9 border-2 border-dotted border-card;
+    @apply h-8 w-5/6 -mt-5  border-2 border-dotted border-card md:-mt-9;
   }
   #grocery-status,
   #restaurant-status {
-    @apply ml-1 mr-1 mt-1 h-7 bg-accent;
+    @apply ml-1 mr-1 mt-1 h-5 bg-accent;
   }
   .budget-btn-wrapper {
     @apply mt-8 flex w-full justify-center text-center;

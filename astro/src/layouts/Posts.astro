@@ -38,12 +38,11 @@ const next = pageNum < totalPages ? "" : "disabled";
 
 <Layout title={`Posts | ${SITE.title}`}>
   <Header />
-  <Main pageTitle="Posts" pageDesc="All the articles I've posted.">
+  <Main pageTitle="Posts" pageDesc="Here's what we've covered so far.">
     <ul>
       {
         posts.map((post:Post) => (
           <Card href={`/posts/${post.slug}`} frontmatter={post} />
-          // <p>{post.title} {post.description.current}</p>
         ))
       }
     </ul>

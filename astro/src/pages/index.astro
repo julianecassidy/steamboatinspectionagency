@@ -68,9 +68,9 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       )
     } -->
 
-        <div id="recent-posts" class="prose order-1 max-width-none">
+    <section id="recent-posts" class="prose order-1">
       <h2>recent posts</h2>
-      <ul>
+      <div class="flex flex-wrap gap-3 justify-between">
         {
           posts
             .filter((post:Post) => !post.featured)
@@ -85,7 +85,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
                 )
             )
         }
-      </ul>
+      </div>
       <div class="all-posts-btn-wrapper">
         <LinkButton href="/posts">
           All Posts
@@ -96,7 +96,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           </svg>
         </LinkButton>
       </div>
-    </div>
+    </section>
 
     <section id="about" class="prose order-2">
       <h2>about</h2>
@@ -181,7 +181,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   /* ===== Featured & Recent Posts Sections ===== */
   #featured,
   #recent-posts {
-    @apply block pb-6 pt-12 w-full sm:ml-12 md:w-2/3 md:ml-16;
+    @apply flex-none pb-6 pt-12 w-full sm:ml-12 md:basis-2/3 md:ml-16;
   }
   #featured h2,
   #recent-posts h2 {
@@ -216,7 +216,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   }
   /* ===== Category Section ===== */
   #home-categories {
-    @apply pb-6 pt-12 w-full sm:ml-12 md:w-2/3 md:ml-16;
+    @apply flex-none pb-6 pt-12 w-full sm:ml-12 md:w-2/3 md:ml-8;
   } 
   #home-categories h2 {
     @apply w-full font-semibold text-center text-3xl pb-6;
