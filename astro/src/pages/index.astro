@@ -77,12 +77,11 @@ const socialCount = SOCIALS.filter(social => social.active).length;
             .map(
               (post:Post, index:number) =>
                 index < 4 && (
-                  <p>{post.slug}</p>
-                  // <Card
-                  //   href={`/posts/${post.slug}`}
-                  //   frontmatter={post}
-                  //   secHeading={false}
-                  // />
+                  <Card
+                    href={`/posts/${post.slug}`}
+                    frontmatter={post}
+                    secHeading={false}
+                  />
                 )
             )
         }
