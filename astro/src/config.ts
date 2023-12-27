@@ -3,7 +3,7 @@ import type { Site, SocialObjects } from "./types";
 export const SITE: Site = {
   website: "https://steamboatinspectionagency.com", // replace this with your deployed domain
   author: "Jules Harter",
-  desc: "Adventures of a curious mind.",
+  desc: "Adventures of a curious mind. Jules Harter writes about budgeting, cooking and eating, gardening, exploring the small happinesses around us.",
   title: "Steamboat Inspection Agency",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,

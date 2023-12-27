@@ -34,18 +34,18 @@ const tagPosts = getPostsByTag(posts, tag);
 <Layout title={`Tag:${tag} | ${SITE.title}`}>
   <Header activeNav="categories" />
   <Main
-    pageTitle={[`Tag:`, `${tag}`]}
+    pageTitle={[`Category:`, `${tag}`]}
     titleTransition={tag}
-    pageDesc={`All the articles with the tag "${tag}".`}
+    pageDesc={`All the posts in the category "${tag}".`}
   >
-    <h1 slot="title" transition:name={tag}>{`Tag:${tag}`}</h1>
-    <ul>
+    <h1 slot="title" transition:name={tag}>{`Category:${tag}`}</h1>
+    <div>
       {
         tagPosts.map((post) => (
           <Card href={`/posts/${post.slug}`} frontmatter={post} />
         ))
       }
-    </ul>
+    </div>
   </Main>
   <Footer />
 </Layout>

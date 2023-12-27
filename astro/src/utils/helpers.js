@@ -28,6 +28,7 @@ export function formatPostData(posts) {
         publishedAt: post.publishedAt,
         id: post._id,
         mainImage: post.mainImage,
+        mainImageAlt: post.mainImageAlt,
     }
 })
 }

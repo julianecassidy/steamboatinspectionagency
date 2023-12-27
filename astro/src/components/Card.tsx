@@ -8,13 +8,14 @@ export interface Props {
     title: string,
     publishedAt: string,
     description: string,
-    mainImage: string
+    mainImage: string,
+    mainImageAlt: string,
   };
   secHeading?: boolean;
 }
 
 export default function Card({ href, frontmatter, secHeading = true }: Props) {
-  const { title, publishedAt, mainImage, description } = frontmatter;
+  const { title, publishedAt, mainImage, mainImageAlt, description } = frontmatter;
 
   const headerProps = {
     style: { viewTransitionName: slugifyStr(title) },
@@ -22,22 +23,25 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
   };
 
   return (
-      <a
-        href={href}
-        className="inline-block text-lg font-body text-skin-accent no-underline"
-      >
+    <a
+      href={href}
+      className="inline-block text-lg font-body text-skin-body no-underline"
+    >
       <div className="w-64 h-128 bg-card/20 sm:w-72">
-        <img src={getSanityImageURL(mainImage).width(288).height(240).fit("crop").url()} />
+        <img 
+          src={getSanityImageURL(mainImage).width(288).height(240).fit("crop").url()}
+          alt={mainImageAlt}
+         />
         {secHeading ? (
           <h2 {...headerProps}>{title}</h2>
         ) : (
           <h3 {...headerProps}>{title}</h3>
         )}
-        <span className="flex justify-center -mt-3">
-      <Datetime datetime={publishedAt} />
+        <span className="flex justify-center">
+          <Datetime datetime={publishedAt} />
         </span>
-      <p className="mt-0.5 px-2 pb-2">{description}</p>
+        <p className="mt-0.5 px-2 pb-2">{description}</p>
       </div>
-      </a>
+    </a>
   );
 }
