@@ -68,7 +68,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       )
     } -->
 
-        <section id="recent-posts" class="prose order-1 max-width-none">
+        <div id="recent-posts" class="prose order-1 max-width-none">
       <h2>recent posts</h2>
       <ul>
         {
@@ -96,7 +96,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           </svg>
         </LinkButton>
       </div>
-    </section>
+    </div>
 
     <section id="about" class="prose order-2">
       <h2>about</h2>
@@ -181,7 +181,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   /* ===== Featured & Recent Posts Sections ===== */
   #featured,
   #recent-posts {
-    @apply pb-6 pt-12 w-full sm:ml-12 md:max-w-3xl md:mx-16;
+    @apply block pb-6 pt-12 w-full sm:ml-12 md:w-2/3 md:ml-16;
   }
   #featured h2,
   #recent-posts h2 {
@@ -192,7 +192,8 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   }
   /* ===== About Section ===== */
   #about {
-    @apply flex flex-wrap bg-border/50 pb-4 sm:max-w-none sm:my-4 md:bg-fill md:w-[22%] md:mx-4;
+    @apply flex flex-wrap bg-border/50 pb-4 sm:max-w-none sm:my-4 md:bg-fill 
+    md:w-[22%] md:justify-self-end;
   }
   #about h2 {
     @apply w-full my-4 inline-block text-xl text-center sm:my-8 sm:text-2xl;
@@ -211,15 +212,15 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   }
   /* ===== Budget Section ===== */
   #home-budget {
-    @apply w-full bg-fill sm:ml-4 md:w-[22%];
+    @apply w-full bg-fill sm:ml-4 md:ml-0 md:w-[22%] md:justify-self-end;
   }
   /* ===== Category Section ===== */
   #home-categories {
-    @apply pb-6 pt-12 w-full sm:ml-12 md:max-w-3xl md:mx-16;
+    @apply pb-6 pt-12 w-full sm:ml-12 md:w-2/3 md:ml-16;
   } 
   #home-categories h2 {
-        @apply w-full font-semibold text-center text-3xl pb-6;
-    } 
+    @apply w-full font-semibold text-center text-3xl pb-6;
+  } 
   /* ===== Product Section ===== */
   #products {
     @apply w-full;
