@@ -1,19 +1,16 @@
 ---
-import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import LinkButton from "@components/LinkButton.astro";
 import Hr from "@components/Hr.astro";
 import Card from "@components/Card";
-import Socials from "@components/Socials.astro";
-import getSortedPosts from "@utils/getSortedPosts";
+// import getSortedPosts from "@utils/getSortedPosts";
 import { formatPostData } from "@utils/helpers";
 import { getAllPosts } from "lib/api";
-import slugify from "@utils/slugify";
-import { SOCIALS } from "@config";
 import BudgetStatusBars from "@components/BudgetStatusBars.astro";
 import Categories from "@components/Categories.astro";
+import About from "@components/About.astro";
 
 const posts = await formatPostData(await getAllPosts());
 
@@ -21,27 +18,25 @@ const posts = await formatPostData(await getAllPosts());
 // const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 
 export interface Post {
-title: string,
-  slug: string,
-  author: string,
-  mainImage: string,
-  tags: [],
-  tagData: [],
-  publishedAt: string,
-  featured: boolean,
-  body: string,
-  description: any,
-  _id: string,
+  title: string;
+  slug: string;
+  author: string;
+  mainImage: string;
+  tags: [];
+  tagData: [];
+  publishedAt: string;
+  featured: boolean;
+  body: string;
+  description: any;
+  _id: string;
 }
-
-const socialCount = SOCIALS.filter(social => social.active).length;
-
 ---
 
 <Layout>
   <Header />
   <main id="main-content">
-    <!-- {
+    <section id="home-content" class="order-1">
+      <!-- {
       featuredPosts.length > 0 && (
         <>
           <section id="recent"  class="prose">
@@ -68,71 +63,40 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       )
     } -->
 
-    <section id="recent-posts" class="prose order-1">
-      <h2>recent posts</h2>
-      <div class="flex flex-wrap gap-3 justify-between">
-        {
-          posts
-            .filter((post:Post) => !post.featured)
-            .map(
-              (post:Post, index:number) =>
-                index < 4 && (
-                  <Card
-                    href={`/posts/${post.slug}`}
-                    frontmatter={post}
-                    secHeading={false}
-                  />
-                )
-            )
-        }
-      </div>
-      <div class="all-posts-btn-wrapper">
-        <LinkButton href="/posts">
-          All Posts
-          <svg xmlns="http://www.w3.org/2000/svg"
-            ><path
-              d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
-            ></path>
-          </svg>
-        </LinkButton>
-      </div>
-    </section>
-
-    <section id="about" class="prose order-2">
-      <h2>about</h2>
-      <img src="./profile.jpg" alt="Headshot of Jules Harter" />
-      <div class="about-content">
-        <p>
-          AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
-          blog theme. This theme follows best practices and provides accessibility
-          out of the box. Light and dark mode are supported by default. Moreover,
-          additional color schemes can also be configured.
-        </p>
-        <p class="text-center w-full sm:w-42 md:w-full")>
-          <LinkButton href="/about">
-            read more about me
+      <section id="recent-posts" class="prose">
+        <h2>recent posts</h2>
+        <div class="flex flex-wrap justify-between gap-3">
+          {
+            posts
+              .filter((post: Post) => !post.featured)
+              .map(
+                (post: Post, index: number) =>
+                  index < 4 && (
+                    <Card
+                      href={`/posts/${post.slug}`}
+                      frontmatter={post}
+                      secHeading={false}
+                    />
+                  )
+              )
+          }
+        </div>
+        <div class="all-posts-btn-wrapper">
+          <LinkButton href="/posts">
+            All Posts
             <svg xmlns="http://www.w3.org/2000/svg"
               ><path
                 d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
               ></path>
             </svg>
           </LinkButton>
-        </p>
-      {
-        // only display if at least one social link is enabled
-        socialCount > 0 && (
-          <div class="social-wrapper">
-            <b>find me around:</b>
-            <Socials />
-          </div>
-        )
-      }
-      </div>
-    </section>
-    <section id="home-budget" class="order-3 md:order-4">
-      <BudgetStatusBars>
-    </section>
-    <!-- <section id="recent-posts" class="prose max-width-none">
+        </div>
+      </section>
+      <section id="home-sidebar-mobile" class="md:hidden prose order-2">
+        <About />
+        <BudgetStatusBars />
+      </section>
+      <!-- <section id="recent-posts" class="prose max-width-none">
       <h2>recent posts</h2>
       <ul>
         {
@@ -161,69 +125,56 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         </LinkButton>
       </div>
     </section> -->
-    <section id="home-categories" class="order-4 md:order-3">
-      <h2>categories</h2>
-      <Categories />
-    </section>
-    <!-- <section id="products" class="order-5">
+      <section id="home-categories">
+        <h2>categories</h2>
+        <Categories />
+      </section>
+      <!-- <section id="products" class="order-5">
       <h2>things I like</h2>
     </section> -->
+    </section>
+    <section id="home-sidebar-md" class="hidden md:block prose order-2">
+      <About />
+      <BudgetStatusBars />
+    </section>
+
   </main>
-
   <Footer />
+
+  <style>
+    /* ===== Main Content ===== */
+    #main-content {
+      @apply box-content flex max-w-full flex-wrap;
+    }
+    #home-content {
+      @apply max-w-full md:basis-2/3;
+    }
+    /* ===== Featured & Recent Posts Sections ===== */
+    #featured,
+    #recent-posts {
+      @apply w-full flex-none pb-6 pt-12 sm:ml-12 md:ml-2;
+    }
+    #featured h2,
+    #recent-posts h2 {
+      @apply text-3xl font-semibold tracking-wide;
+    }
+    .all-posts-btn-wrapper {
+      @apply my-4 text-center;
+    }
+    /* ===== Sidebar Section ===== */
+    #home-sidebar-md, #home-sidebar-mobile {
+      @apply -mx-2 max-w-full md:mx-0 md:w-1/4 md:mr-2;
+    }
+    /* ===== Category Section ===== */
+    #home-categories {
+      @apply max-w-full flex-none pb-6 pt-12 sm:ml-6 md:ml-2;
+    }
+    #home-categories h2 {
+      @apply w-full pb-6 text-center text-3xl font-semibold;
+    }
+    /* ===== Product Section ===== */
+    #products {
+      @apply w-full;
+    }
+  </style>
 </Layout>
-
-<style>
-  /* ===== Main Content ===== */
-  #main-content {
-    @apply flex flex-wrap w-full box-content;
-  }
-  /* ===== Featured & Recent Posts Sections ===== */
-  #featured,
-  #recent-posts {
-    @apply flex-none pb-6 pt-12 w-full sm:ml-12 md:basis-2/3 md:ml-16;
-  }
-  #featured h2,
-  #recent-posts h2 {
-    @apply text-3xl font-semibold tracking-wide;
-  }
-  .all-posts-btn-wrapper {
-    @apply my-4 text-center;
-  }
-  /* ===== About Section ===== */
-  #about {
-    @apply flex flex-wrap bg-border/50 pb-4 sm:max-w-none sm:my-4 md:bg-fill 
-    md:w-[22%] md:justify-self-end;
-  }
-  #about h2 {
-    @apply w-full my-4 inline-block text-xl text-center sm:my-8 sm:text-2xl;
-  }
-  #about img {
-    @apply w-48 sm:w-52 md:ml-0 md:w-60;
-  }
-  .about-content {
-    @apply mt-2 mb-4 sm:w-7/12 md:w-full;
-  }
-  .social-wrapper {
-    @apply mt-2 w-full flex flex-col justify-center items-center;
-  }
-  .social-links {
-    @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
-  }
-  /* ===== Budget Section ===== */
-  #home-budget {
-    @apply w-full bg-fill sm:ml-4 md:ml-0 md:w-[22%] md:justify-self-end;
-  }
-  /* ===== Category Section ===== */
-  #home-categories {
-    @apply flex-none pb-6 pt-12 w-full sm:ml-12 md:w-2/3 md:ml-8;
-  } 
-  #home-categories h2 {
-    @apply w-full font-semibold text-center text-3xl pb-6;
-  } 
-  /* ===== Product Section ===== */
-  #products {
-    @apply w-full;
-  }
-
-</style>

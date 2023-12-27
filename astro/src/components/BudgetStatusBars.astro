@@ -40,7 +40,7 @@ const restaurantPercent = Math.round((RESTAURANT_SPENT/2400) * 100);
 
 <style>
   #budget {
-    @apply flex flex-wrap justify-start pt-4 md:pt-0;
+    @apply flex flex-wrap justify-center max-w-none pt-4 md:pt-0;
   }
   #budget h3, p {
     @apply w-full;
@@ -52,7 +52,7 @@ const restaurantPercent = Math.round((RESTAURANT_SPENT/2400) * 100);
     @apply inline-block w-2/5 mt-2 font-sans text-sm md:mb-8;
   }
   #groceries, #restaurants {
-    @apply ml-8 -mt-4 pt-4 w-full sm:pt-0 sm:ml-32 sm:mt-2 md:ml-4 md:-mr-28;
+    @apply ml-8 -mt-4 pt-4 w-full sm:pt-0 sm:ml-32 sm:mt-2 md:-ml-1 md:-mr-9;
   }
   .bar {
     @apply h-8 w-5/6 -mt-5  border-2 border-dotted border-card md:-mt-9;
