@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+// import { getCollection } from "astro:content";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Hr from "@components/Hr.astro";
@@ -8,16 +8,22 @@ import Main from "@layouts/Main.astro";
 import Tag from "@components/Tag.astro";
 import Categories from "@components/Categories.astro";
 import getUniqueTags from "@utils/getUniqueTags";
+import { formatPostData } from "@utils/helpers";
+import { getAllPosts } from "lib/api";
 import { SITE } from "@config";
 
-const posts = await getCollection("blog");
+// const posts = await getCollection("blog");
+const posts = formatPostData(await getAllPosts());
 
 let tags = getUniqueTags(posts);
 ---
 
 <Layout title={`Categories | ${SITE.title}`}>
   <Header activeNav="categories" />
-  <Main pageTitle="Explore" pageDesc="Looking for something in particular? Just browsing? Start with the categories below.">
+  <Main 
+    pageTitle="Explore" 
+    pageDesc="Looking for something in particular? Just browsing? Start with the categories below."
+  >
     <Categories />
     <Hr />
     <h2>Other Topics</h2>

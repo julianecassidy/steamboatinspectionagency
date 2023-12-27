@@ -3,6 +3,10 @@
   "compilerOptions": {
     "baseUrl": "src",
     "jsx": "react-jsx",
+    "target": "es5",
+    "lib": [
+      "es2019"
+    ],
     "paths": {
       "@assets/*": [
         "assets/*"

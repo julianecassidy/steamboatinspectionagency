@@ -1,10 +1,25 @@
 import { slugifyStr } from "./slugify";
-import type { CollectionEntry } from "astro:content";
+// import type { CollectionEntry } from "astro:content";
 
-const getUniqueTags = (posts: CollectionEntry<"blog">[]) => {
-  const filteredPosts = posts.filter(({ data }) => !data.draft);
-  const tags: string[] = filteredPosts
-    .flatMap(post => post.data.tags)
+export interface Post {
+    title: string,
+    slug: string,
+    author: string,
+    mainImage: string,
+    tags: [],
+    tagData: [],
+    publishedAt: string,
+    featured: boolean,
+    body: string,
+    description: any,
+    _id: string,
+}
+
+
+const getUniqueTags = (posts: Post[]) => {
+  console.log(posts);
+  const tags: string[] = posts
+    .flatMap(post => post.tags)
     .map(tag => slugifyStr(tag))
     .filter(
       (value: string, index: number, self: string[]) =>

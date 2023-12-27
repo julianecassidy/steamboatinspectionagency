@@ -20,8 +20,7 @@ const { title, author, description, mainImage, canonical, publishedAt, tags } =
 
 // const { Content } = await post.render();
 
-console.log(post.mainImage);
-const imgUrl = getSanityImageURL(post.mainImage).url();
+const imgUrl = post.mainImage ? getSanityImageURL(post.mainImage).url() : null;
 
 const ogImageUrl = typeof imgUrl === "string" ? imgUrl : imgUrl?.src;
 const ogUrl = new URL(
@@ -56,7 +55,8 @@ const ogUrl = new URL(
     <ul>
       {tags.map((tag:string) => <Tag name={tag} size="sm" />)}
     </ul>
-    {post.mainImage && <img class="post-main__img" loading="lazy" src={getSanityImageURL(post.mainImage).url()} />}
+    {post.mainImage && 
+      <img class="post-main__img post-hero" loading="lazy" src={getSanityImageURL(post.mainImage).url()} />}
     <article id="article" role="article" class="prose mx-auto mt-8 max-w-3xl">
       <SanityPortableText portableText={post.body} />
       <!-- <Content /> -->
@@ -85,6 +85,9 @@ const ogUrl = new URL(
 <style>
   main {
     @apply mx-auto w-full max-w-3xl px-4 pb-12;
+  }
+  .post-hero {
+    @apply max-h-60;
   }
   .post-title {
     @apply text-2xl font-semibold text-skin-accent;
