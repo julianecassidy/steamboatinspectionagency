@@ -21,8 +21,9 @@ export interface Post {
 }
 
 export async function getStaticPaths() {
-  const posts = formatPostData(await getAllPosts())
-  .then((p:Post[]) =>
+  let posts = formatPostData(await getAllPosts());
+
+  posts = ((p:Post[]) =>
     p.filter((post:Post) => !post.mainImage)
   );
 

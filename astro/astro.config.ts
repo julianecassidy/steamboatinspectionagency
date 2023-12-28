@@ -7,8 +7,6 @@ import sitemap from "@astrojs/sitemap";
 import { SITE } from "./src/config";
 import { sanityIntegration } from '@sanity/astro';
 
-import sanity from "@sanity/astro";
-
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
