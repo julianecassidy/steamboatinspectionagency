@@ -19,6 +19,8 @@
     "@astrojs/rss": "^3.0.0",
     "@astropub/md": "^0.3.0",
     "@resvg/resvg-js": "^2.4.1",
+    "@sanity/astro": "^2.1.4",
+    "@sanity/client": "^6.10.0",
     "astro": "^3.6.4",
     "astro-sanity": "^1.1.7",
     "axios": "^1.6.2",
@@ -26,6 +28,7 @@
     "github-slugger": "^2.0.0",
     "remark-collapse": "^0.1.2",
     "remark-toc": "^9.0.0",
+    "sanity": "^3.23.4",
     "satori": "^0.10.8",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.3.3"
@@ -49,5 +52,10 @@
     "prettier-plugin-tailwindcss": "^0.5.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,md,mdx,json}": [
+      "prettier --plugin-search-dir=. --write"
+    ]
   }
 }

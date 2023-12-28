@@ -5,19 +5,22 @@ import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
 import { SITE } from "./src/config";
-import sanity from "astro-sanity";
+import { sanityIntegration } from '@sanity/astro';
+
+import sanity from "@sanity/astro";
 
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
   integrations: [tailwind({
     applyBaseStyles: false
-  }), react(), sitemap(), sanity({
-    projectId: 'uzrqwbe7',
-    dataset: 'production',
-    apiVersion: '2021-03-25',
-    useCdn: true
-  })],
+  }), react(), sitemap(), 
+  sanityIntegration({
+      projectId: 'uzrqwbe7',
+      dataset: 'production',
+      apiVersion: '2021-03-25',
+      useCdn: true
+    })],
   markdown: {
     remarkPlugins: [remarkToc, [remarkCollapse, {
       test: "Table of contents"
@@ -32,5 +35,5 @@ export default defineConfig({
       exclude: ["@resvg/resvg-js"]
     }
   },
-  scopedStyleStrategy: "where",
+  scopedStyleStrategy: "where"
 });

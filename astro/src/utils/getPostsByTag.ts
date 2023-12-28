@@ -1,5 +1,4 @@
 import { slugifyAll } from "./slugify";
-import type { CollectionEntry } from "astro:content";
 
 export interface Post {
   title: string,

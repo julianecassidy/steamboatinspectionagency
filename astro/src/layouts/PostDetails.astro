@@ -18,8 +18,8 @@ const { post } = Astro.props;
 const { title, author, description, mainImage, canonical, publishedAt, tags } =
   post;
 
-const imgUrl = post.mainImage
-  ? getSanityImageURL(post.mainImage).width(1200).url()
+const imgUrl = mainImage
+  ? getSanityImageURL(mainImage).width(1200).url()
   : null;
 
 const ogImageUrl = typeof imgUrl === "string" ? imgUrl : imgUrl?.src;
