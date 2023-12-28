@@ -31,7 +31,7 @@ You can find Steamboat Inspection Agency on [Instagram](https://www.instagram.co
     <div class="about prose">
       <h1>Meet <span class="font-display font-normal text-5xl sm:text-7xl">Jules Harter</span></h1>
       <div class="about-body">
-        <img src="/profile.jpg" alt="Headshot of Jules Harter"/>
+        <img src="/profile-small.jpg" alt="Headshot of Jules Harter"/>
         <div class="about-text">
           <Markdown of={aboutText} />
         </div>
@@ -49,12 +49,12 @@ You can find Steamboat Inspection Agency on [Instagram](https://www.instagram.co
     @apply text-center;
   }
   .about-body {
-    @apply flex flex-wrap justify-around gap-x-8 sm:flex-nowrap;
+    @apply flex flex-wrap justify-around items-start gap-x-8 sm:flex-nowrap;
   }
   .about-body img {
-    @apply mb-4 h-72;
+    @apply mb-4;
   }
   .about-text {
-    @apply -mt-5;
+    @apply -mt-5 sm:w-4/5;
   }
 </style>
