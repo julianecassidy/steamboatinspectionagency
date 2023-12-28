@@ -49,7 +49,7 @@ export const SOCIALS: SocialObjects = [
   },
   {
     name: "YouTube",
-    href: "https://youtube.com/steamboatinspectionagency",
+    href: "https://www.youtube.com/channel/UCy6n8t3dKQEj3hnbmLxNmCw",
     linkTitle: `${SITE.title} on YouTube`,
     active: true,
   },
@@ -67,14 +67,14 @@ export const SOCIALS: SocialObjects = [
   },
   {
     name: "Tumblr",
-    href: "https://tumblr.com/steamboatinspectionagency",
-    linkTitle: `${SITE.title} on TikTok`,
-    active: false,
+    href: "https://steamboatinspectionagency.tumblr.com/",
+    linkTitle: `${SITE.title} on Tumblr`,
+    active: true,
   },
   {
     name: "Medium",
-    href: "https://medium.com/julesharter",
-    linkTitle: `${SITE.title} on Medium`,
-    active: false,
+    href: "https://medium.com/@julesharterwriter",
+    linkTitle: `Jules Harter on Medium`,
+    active: true,
   },
 ];

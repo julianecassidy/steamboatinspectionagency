@@ -6,6 +6,9 @@ import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
 import { SITE } from "./src/config";
 import sanity from "astro-sanity";
+import netlify from '@astrojs/netlify';
+
+import netlify from "@astrojs/netlify/functions";
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,7 +19,7 @@ export default defineConfig({
     projectId: 'uzrqwbe7',
     dataset: 'production',
     apiVersion: '2021-03-25',
-    useCdn: true,
+    useCdn: true
   })],
   markdown: {
     remarkPlugins: [remarkToc, [remarkCollapse, {
@@ -32,5 +35,7 @@ export default defineConfig({
       exclude: ["@resvg/resvg-js"]
     }
   },
-  scopedStyleStrategy: "where"
+  scopedStyleStrategy: "where",
+  output: 'server',
+  adapter: netlify()
 });

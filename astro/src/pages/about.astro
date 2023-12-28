@@ -1,28 +1,39 @@
 ---
 import { SITE } from "@config";
+import { Markdown } from "@astropub/md";
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+
+const aboutText = `
+Hello, I'm Jules! I'm a 30ish learner and adventurer. My approach to life is continuous curiosity and a willingness to try, to fail, and to grow.
+
+Currently, I am based in Denver, Colorado and I am from California originally, although there were several stops between the two. When I am not traveling, I am usually baking in my tiny kitchen, trying to get plants to grow, taking on poorly planned house projects, or learning a new craft. I am also obsessed with managing my home budget and finances.
+
+I am happily single and have no plans to change that. My friends, family, and therapist are support system. Meanwhile, I have the independence that lets me live exactly as I want (which usually just means craft supplies everywhere and random road trips).
+
+I like making things myself, whether that's growing vegetables for my food or sewing my own clothes, because I enjoy seeing how these things are done and the feeling of self-sufficiency the work brings. Producing things for myself, and the process of learning how, is what brings me the most joy.
+
+My goals in life are to buy three acres, build a small cottage, and spend my days sitting outside with my dog and some goats. If you've gotten something useful out of Steamboat Inspection Agency, or maybe just a good laugh, consider funding my goat herd with a few dollars at [my Ko-fi](https://ko-fi.com/steamboatinspectionagency)
+
+## Contact Me
+Want to chat? You can always reach out through my [Instagram](https://www.instagram.com/steamboatinspectionagency/) or [send me an email](mailto:julesharterwriter@gmail.com. For questions, check out the [FAQ page](https://steamboatinspectionagency.com/faqs). You might find the answer there!
+## Advertising & Partnerships
+I love working with brands and businesses and am happy to create partnerships of all shapes and sizes. Please [email me](mailto:julesharterwriter@gmail.com) for a media kit.
+## Let's Connect
+You can find Steamboat Inspection Agency on [Instagram](https://www.instagram.com/steamboatinspectionagency/) and [YouTube](https://www.youtube.com/channel/UCy6n8t3dKQEj3hnbmLxNmCw) for more video content, conversations, how tos, and daily musings. Looking for some peaceful aesthetics? Check out [Steamboat Inspection Agency on Tumblr](https://steamboatinspectionagency.tumblr.com/). You can also read posts from the blog on [Medium](https://medium.com/@julesharterwriter).
+`;
 ---
 
 <Layout title={`About the Author | ${SITE.title}`}>
   <Header />
   <main id="main-content">
     <div class="about prose">
-      <h1>About</h1>
+      <h1>Meet <span class="font-display font-normal text-5xl sm:text-7xl">Jules Harter</span></h1>
       <div class="about-body">
-        <img src="/profile.jpg" alt="Headshot of Jules Harter" />
+        <img src="/profile.jpg" alt="Headshot of Jules Harter"/>
         <div class="about-text">
-          <p>
-            Use justify-evenly to justify items along the container’s main axis
-            such that there is an equal amount of space around each item, but
-            also accounting for the doubling of space you would normally see
-            between each item when using justify-around:
-          </p>
-           Use justify-evenly to justify items along the container’s main axis
-          such that there is an equal amount of space around each item, but also
-          accounting for the doubling of space you would normally see between
-          each item when using justify-around:
+          <Markdown of={aboutText} />
         </div>
       </div>
     </div>
@@ -41,7 +52,7 @@ import Footer from "@components/Footer.astro";
     @apply flex flex-wrap justify-around gap-x-8 sm:flex-nowrap;
   }
   .about-body img {
-    @apply w-full sm:w-2/5 md:w-5/12;
+    @apply mb-4 h-72;
   }
   .about-text {
     @apply -mt-5;
