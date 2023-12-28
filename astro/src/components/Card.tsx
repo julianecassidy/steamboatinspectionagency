@@ -33,6 +33,10 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
     className: "w-64 h-128 bg-card/20 sm:w-72",
   };
 
+  const imgProps = {
+    className: "w-72 h-60",
+  };
+
   const spanProps = {
     className: "flex justify-center",
   };
@@ -50,6 +54,7 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
         <img 
           src={getSanityImageURL(mainImage).width(288).height(240).fit("crop").url()}
           alt={mainImageAlt}
+          {...imgProps}
          />
         {secHeading ? (
           <h2 {...headerProps}>{title}</h2>
