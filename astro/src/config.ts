@@ -51,7 +51,7 @@ export const SOCIALS: SocialObjects = [
     name: "YouTube",
     href: "https://www.youtube.com/channel/UCy6n8t3dKQEj3hnbmLxNmCw",
     linkTitle: `${SITE.title} on YouTube`,
-    active: true,
+    active: false,
   },
   {
     name: "Pinterest",
@@ -75,6 +75,6 @@ export const SOCIALS: SocialObjects = [
     name: "Medium",
     href: "https://medium.com/@julesharterwriter",
     linkTitle: `Jules Harter on Medium`,
-    active: true,
+    active: false,
   },
 ];
