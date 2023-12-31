@@ -10,6 +10,7 @@ import { getAllPosts } from "lib/api";
 import BudgetStatusBars from "@components/BudgetStatusBars.astro";
 import Categories from "@components/Categories.astro";
 import About from "@components/About.astro";
+import Sidebar from "@components/Sidebar.astro";
 
 const posts = await formatPostData(await getAllPosts());
 
@@ -131,8 +132,7 @@ export interface Post {
     </section> -->
     </section>
     <section id="home-sidebar-md" class="hidden md:block prose order-2">
-      <About />
-      <BudgetStatusBars />
+      <Sidebar />
     </section>
 
   </main>

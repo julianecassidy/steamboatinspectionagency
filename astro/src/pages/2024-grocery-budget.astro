@@ -1,0 +1,87 @@
+---
+import { SITE } from "@config";
+import { Markdown } from "@astropub/md";
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import BudgetStatusBars from "@components/BudgetStatusBars.astro";
+
+const introText = `At the beginning of 2024, I made it my goal to keep my grocery spending under $200 per month on average, or under $2,880 for the year. The reasons behind this challenge are to save money, to reduce my food waste, and to explore new foods and recipes that are cost effective as well as enjoyable to eat. I also want to give myself the challenge eating healthy on a very limited budget.
+
+Although I have never spent extensively on groceries, it also has never been an area where I followed a particularly strict budget. My hope is that I will save some money and get more in touch with what I'm eating.`
+
+const firstSection = `## How It's Going So Far
+For 2024, I have budgeted $2,880 for the year in groceries and $2,400 for the year in eating out. The current budget looks like this:`
+
+const remainingText = `### Why $240 for Groceries? Why a Restaurant Budget?
+
+I chose $240 based off the [USDA guidelines](https://www.fns.usda.gov/cnpp/usda-food-plans-cost-food-monthly-reports). The USDA publishes several grocery budgets at different price points. Their "thrifty" budget forms the basis for the [Supplemental Nutrition Assistance Program (SNAP)](https://www.cbpp.org/research/food-assistance/a-quick-guide-to-snap-eligibility-and-benefits), one of the available food stamp programs.
+
+The [November 2023 guidelines for the thrifty budget](https://fns-prod.azureedge.us/sites/default/files/resource-files/Cost_Of_Food_Thrifty_Food_Plan_November_2023_0.pdf) puts the monthly cost of groceries for a single female aged 20 to 50 years at $264. The plan assumes that all meals and snack are prepared at home. That comes to about $8.52 per day.
+
+I assume I will not be making *all* of my meals. On average, I go out with friends or order takeout one to two times a week. Many times when I go out, I have leftovers. If we say that eating out removes eight of the meals I'm going to eat at home in a month, that brings us to $240.
+
+I budgeted $200 per month for eating out or getting takeout as well. This prevents me from trying to get around the grocery budget by eating out instead. I am based in Denver which is a high cost of living area, and a meal out will average between $20 to $50. $200 per month should cover about six or seven meals if I plan carefully.
+
+## What Kinds of Foods Do I Eat?
+The challenge of getting a grocery budget for one person down to $240 per month depends largely on how you eat. Fortunately, I already eat relatively cheaply.
+
+I eat about 1700-1800 calories a day. I do not have any food allergies or sensitivities and I am not a picky eater. I am not a vegetarian, but I eat a plant based diet 90% of the time. I usually eat meat only when I go out.
+
+I also already cook much of my own food, usually through meal prep, often cooking in large batches which I then freeze. I do buy some frozen foods and pre-prepared foods, as well as snack foods. In addition to cooking, I bake frequently which can get costly depending on the ingredients.
+
+In terms of beverages, I drink mostly water, coffee, and tea. I will occasionally buy sparkling water, kombucha, beer, and wine.
+
+Overall my grocery budget has been pretty manageable in past years. In 2023, I averaged $250 per month in groceries, although I was averaging $400 to $500 a month and eating out.
+
+Keeping my grocery budget under control has also been hardener as prices have increased significantly. For instance, yogurt that I bought for $3.99 in 2019 is now $5.99 for the same package if not a smaller one. While prices seem to have leveled out for now, learning how to eat more affordably has become a more important skill for me to have.
+
+## Rules for My $240 Per Month Grocery Budget 
+The most important rule is that I am not starving myself and I'm not eating significantly unhealthy foods during this year to stay under budget. This means no skipped meals when I am feeling hungry and no eating plate ramen or a bowl of rice for multiple meals without throwing in some protein and vegetables.
+
+If I find out that I cannot live on $240 a month in groceries without feeling unhealthy, that's as important a realization as finding out that I can do it.
+
+Knowing that I am striving for a relatively balanced and healthy diet, here are the rules for how I am tracking my spending this year:
+1. $2,880 is the budget for the year, but the budget each month month is flexible. The $240 per month is a guideline rather than a strict budget. The way I meal prep, I will often cook two or three months of food at a time so some months I might spend far more than $240 while other months I may come in below that.
+ 2. Food that was already in the house is fair game. Anything that I had previously purchased that was already in my house before January 1 does not count towards my budget. However, prior to January 1, I had spent two months out of town so there was not much to begin with.
+ 3. Gift cards and free food do not count towards my totals. Sometimes life gives you free food and you just have to embrace it. 
+ 4. Coffee I purchase from a coffee shop does not count. Coffee I drink at home does. I have a subscription to my local shopping coffee shop that gets me free coffee. I am tracking this expense separately and it will not be part of my eating out budget. However coffee beans that I buy to make coffee with at home will count as part of my grocery budget.
+ 5. Non-edible kitchen items are not part of the grocery budget. Things I buy for meal prep like containers, even one time use ones, are not included.
+ 6. Plant seeds are counted, but other gardening items are not. I garden each year and use the vegetables and herbs I grow to supplement my groceries. I'm counting any seeds or seedlings I buy. Likewise, if I sell any seedlings, the money I make from that will be added to the grocery budget. Other gardening items, including once a year purchases like soil, compost, and fertilizer, are not part of the grocery budget. 
+ 
+ Those are the ideas behind my project and challenge for the year. Follow along here and on [Instagram](https://instagram.com/steamboatinspectionagency) to keep up with what I'm buying, how I'm cooking, and what ways I'm finding to save money and keep my spending under $240 per month.
+`
+
+---
+<Layout title={`2024 Grocery Budget | ${SITE.title}`}>
+  <Header />
+  <main id="main-content">
+    <div class="budget prose">
+      <h1>Setting (and Sticking to) a 2024 Grocery Budget--$240 Per Month for a Single Person</h1>
+      <div class="budget-body">
+          <Markdown of={introText} />
+          <!-- <img src -->
+          <Markdown of={firstSection} />
+          <BudgetStatusBars />
+          <p class="text-sm">
+            <i>Spending is updated monthly on the first of the month.</i>
+          </p>
+          <Markdown of={remainingText} />
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .budget {
+    @apply prose mx-6 my-12 sm:ml-12 md:mx-auto;
+  }
+  .budget h1 {
+    @apply text-center;
+  }
+  .budget-body {
+    @apply justify-around items-start gap-x-8 sm:flex-nowrap;
+  }
+</style>

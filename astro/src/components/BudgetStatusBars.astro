@@ -6,6 +6,13 @@ const RESTAURANT_SPENT = 0;
 
 const groceryPercent = Math.round((GROCERY_SPENT/2400) * 100);
 const restaurantPercent = Math.round((RESTAURANT_SPENT/2400) * 100);
+
+export interface Props {
+  showButton?: boolean;
+}
+
+const { showButton=false } = Astro.props;
+
 ---
 
 <div id="budget" class="prose">
@@ -26,8 +33,9 @@ const restaurantPercent = Math.round((RESTAURANT_SPENT/2400) * 100);
       <div id="restaurant-status" style={{ width: `${restaurantPercent}%` }}></div>
     </div>
   </div>
+  {showButton && 
   <div class="budget-btn-wrapper">
-    <LinkButton href="/posts/2024-food-budget">
+    <LinkButton href="/2024-grocery-budget">
       read more about the project
       <svg xmlns="http://www.w3.org/2000/svg"
         ><path
@@ -35,7 +43,7 @@ const restaurantPercent = Math.round((RESTAURANT_SPENT/2400) * 100);
         ></path>
       </svg>
     </LinkButton>
-  </div>
+  </div>}
 </div>
 
 <style>
