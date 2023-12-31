@@ -26,7 +26,7 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
   };
 
   const linkProps = {
-    className: "inline-block text-lg font-body text-skin-body no-underline",
+    className: "inline-block text-lg font-body text-skin-body no-underline ease-in duration-150 hover:scale-105",
   };
 
   const divProps = {
