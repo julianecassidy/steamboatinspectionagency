@@ -1,4 +1,4 @@
-import { type Post} from "@config";
+import type { Post} from "@config";
 import satori, { type SatoriOptions } from "satori";
 import { Resvg } from "@resvg/resvg-js";
 import postOgImage from "./og-templates/post";
