@@ -1,23 +1,10 @@
+// import type { Post } from "@config";
 // import Fuse from "fuse.js";
 // import { useEffect, useRef, useState, useMemo } from "react";
 // import Card from "@components/Card";
 // // import slugify from "@utils/slugify";
 // // import type { CollectionEntry } from "astro:content";
 
-// export interface Post {
-//   title: string,
-//   slug: string,
-//   author: string,
-//   mainImage: string,
-//   mainImageAlt: string,
-//   tags: [],
-//   tagData: [],
-//   publishedAt: string,
-//   featured: boolean,
-//   body: string,
-//   description: any,
-//   _id: string,
-// }
 
 // export type SearchItem = {
 //   title: string;

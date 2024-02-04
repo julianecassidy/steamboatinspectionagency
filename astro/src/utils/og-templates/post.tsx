@@ -1,19 +1,4 @@
-import { SITE } from "@config";
-
-export interface Post {
-  title: string,
-  slug: string,
-  author: string,
-  mainImage: string,
-  mainImageAlt: string,
-  tags: [],
-  tagData: [],
-  publishedAt: string,
-  featured: boolean,
-  body: string,
-  description: any,
-  _id: string,
-}
+import { SITE, type Post } from "@config";
 
 export default (post: Post) => {
   return (

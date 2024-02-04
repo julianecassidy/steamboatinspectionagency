@@ -1,22 +1,8 @@
 import rss from "@astrojs/rss";
 import { getAllPosts } from "lib/api";
 import { formatPostData } from "@utils/helpers.js";
-import { SITE } from "@config";
+import { SITE, type Post } from "@config";
 
-export interface Post {
-  title: string,
-  slug: string,
-  author: string,
-  mainImage: string,
-  mainImageAlt: string,
-  tags: [],
-  tagData: [],
-  publishedAt: string,
-  featured: boolean,
-  body: string,
-  description: any,
-  _id: string,
-}
 
 export async function GET() {
   const posts = formatPostData(await getAllPosts());
