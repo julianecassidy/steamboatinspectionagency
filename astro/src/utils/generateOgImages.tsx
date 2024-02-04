@@ -1,3 +1,4 @@
+import { type Post} from "@config";
 import satori, { type SatoriOptions } from "satori";
 import { Resvg } from "@resvg/resvg-js";
 import postOgImage from "./og-templates/post";
@@ -45,21 +46,6 @@ function svgBufferToPngBuffer(svg: string) {
   const resvg = new Resvg(svg);
   const pngData = resvg.render();
   return pngData.asPng();
-}
-
-export interface Post {
-  title: string,
-  slug: string,
-  author: string,
-  mainImage: string,
-  mainImageAlt: string,
-  tags: [],
-  tagData: [],
-  publishedAt: string,
-  featured: boolean,
-  body: string,
-  description: any,
-  _id: string,
 }
 
 export async function generateOgImageForPost(post: Post) {
