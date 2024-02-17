@@ -1,8 +1,8 @@
 ---
 import LinkButton from "@components/LinkButton.astro";
 
-const GROCERY_SPENT = 45;
-const RESTAURANT_SPENT = 0;
+const GROCERY_SPENT = 210;
+const RESTAURANT_SPENT = 182;
 
 const groceryPercent = Math.round((GROCERY_SPENT/2400) * 100);
 const restaurantPercent = Math.round((RESTAURANT_SPENT/2400) * 100);
@@ -33,7 +33,7 @@ const { showButton=false } = Astro.props;
       <div id="restaurant-status" style={{ width: `${restaurantPercent}%` }}></div>
     </div>
   </div>
-  {showButton && 
+  {showButton &&
   <div class="budget-btn-wrapper">
     <LinkButton href="/2024-grocery-budget">
       read more about the project
