@@ -1,19 +1,5 @@
+import type { Post } from "@config";
 import { slugifyAll } from "./slugify";
-
-export interface Post {
-  title: string,
-  slug: string,
-  author: string,
-  mainImage: string,
-  mainImageAlt: string,
-  tags: [],
-  tagData: [],
-  publishedAt: string,
-  featured: boolean,
-  body: string,
-  description: any,
-  _id: string,
-}
 
 const getPostsByTag = (posts: Post[], tag: string) =>
   posts.filter(post => slugifyAll(post.tags).includes(tag));
