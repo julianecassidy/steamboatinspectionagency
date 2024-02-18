@@ -18,7 +18,6 @@ export interface Props {
 }
 
 export default function Card({ href, frontmatter, secHeading = true }: Props) {
-  console.log("frontmatter", frontmatter);
   const { title, publishedAt, mainImage, mainImageAlt, description } = frontmatter;
 
   const headerProps = {

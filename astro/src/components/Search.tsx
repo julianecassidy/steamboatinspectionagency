@@ -1,8 +1,8 @@
 import type { Post } from "@config";
 import Fuse from "fuse.js";
 import { useEffect, useRef, useState, useMemo } from "react";
+import debounce from "lodash.debounce";
 import Card from "@components/Card";
-// import slugify from "@utils/slugify";
 
 export type SearchItem = {
   title: string;
@@ -27,8 +27,20 @@ export default function SearchBar({ searchList }: Props) {
   );
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+    e.persist();
+    console.log(e);
     setInputVal(e.currentTarget.value);
   };
+
+  const debouncedResults = useMemo(() => {
+    return debounce(handleChange, 300);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      debouncedResults.cancel();
+    };
+  });
 
   const fuse = useMemo(
     () =>
@@ -90,7 +102,7 @@ export default function SearchBar({ searchList }: Props) {
           type="text"
           name="search"
           value={inputVal}
-          onChange={handleChange}
+          onChange={debouncedResults}
           autoComplete="off"
           autoFocus
           ref={inputRef}
@@ -98,7 +110,7 @@ export default function SearchBar({ searchList }: Props) {
       </label>
 
       {inputVal.length > 1 && (
-        <div className="mt-8 mb-6">
+        <div className="mb-6 mt-8">
           Found {searchResults?.length}
           {searchResults?.length && searchResults?.length === 1
             ? " result"
