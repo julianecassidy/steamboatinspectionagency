@@ -27,8 +27,7 @@ export default function SearchBar({ searchList }: Props) {
   );
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    e.persist();
-    console.log(e);
+    console.log(e)
     setInputVal(e.currentTarget.value);
   };
 
@@ -102,7 +101,7 @@ export default function SearchBar({ searchList }: Props) {
           type="text"
           name="search"
           value={inputVal}
-          onChange={debouncedResults}
+          onChange={handleChange}
           autoComplete="off"
           autoFocus
           ref={inputRef}
