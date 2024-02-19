@@ -13,7 +13,6 @@ const builder = imageUrlBuilder(sanityClient);
 // }
 
 export function getSanityImageURL(source) {
-  console.log("img in helper", builder.image(source));
   return builder.image(source);
 }
 

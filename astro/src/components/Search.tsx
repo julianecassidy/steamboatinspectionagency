@@ -1,7 +1,6 @@
 import type { Post } from "@config";
 import Fuse from "fuse.js";
 import { useEffect, useRef, useState, useMemo } from "react";
-import debounce from "lodash.debounce";
 import Card from "@components/Card";
 
 export type SearchItem = {
@@ -27,19 +26,8 @@ export default function SearchBar({ searchList }: Props) {
   );
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-    console.log(e)
     setInputVal(e.currentTarget.value);
   };
-
-  const debouncedResults = useMemo(() => {
-    return debounce(handleChange, 300);
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      debouncedResults.cancel();
-    };
-  });
 
   const fuse = useMemo(
     () =>
