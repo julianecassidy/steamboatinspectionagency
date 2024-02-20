@@ -85,10 +85,6 @@ export default function SearchBar({ searchList }: Props) {
     border-opacity-40 bg-skin-fill py-3 pl-10
     pr-3 placeholder:italic placeholder:text-opacity-75
     focus:border-skin-accent focus:outline-none`,
-    placeholder: "Search for anything...",
-    type: "text",
-    name: "search",
-    value: inputVal,
     onChange: handleChange,
     autoComplete: "off",
     autoFocus: false,
@@ -109,6 +105,10 @@ export default function SearchBar({ searchList }: Props) {
         </span>
         <input
           {...inputProps}
+          placeholder="Search for anything..."
+          type="text"
+          name="search"
+          value={inputVal}
         />
       </label>
 
