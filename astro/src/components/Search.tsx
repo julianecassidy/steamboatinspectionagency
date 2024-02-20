@@ -1,6 +1,6 @@
 import type { Post } from "@config";
 import Fuse from "fuse.js";
-import { useEffect, useRef, useState, useMemo, type InputHTMLAttributes } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import Card from "@components/Card";
 
 export type SearchItem = {
@@ -25,7 +25,8 @@ export default function SearchBar({ searchList }: Props) {
     null
   );
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setInputVal(e.currentTarget.value);
   };
 
