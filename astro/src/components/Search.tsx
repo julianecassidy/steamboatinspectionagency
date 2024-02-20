@@ -1,6 +1,6 @@
 import type { Post } from "@config";
 import Fuse from "fuse.js";
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useRef, useState, useMemo, type InputHTMLAttributes } from "react";
 import Card from "@components/Card";
 
 export type SearchItem = {
@@ -25,7 +25,7 @@ export default function SearchBar({ searchList }: Props) {
     null
   );
 
-  const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputVal(e.currentTarget.value);
   };
 
@@ -84,7 +84,7 @@ export default function SearchBar({ searchList }: Props) {
     className: `block w-full rounded border border-skin-fill
     border-opacity-40 bg-skin-fill py-3 pl-10
     pr-3 placeholder:italic placeholder:text-opacity-75
-    focus:border-skin-accent focus:outline-none`
+    focus:border-skin-accent focus:outline-none`,
   };
 
   const divProps = {
