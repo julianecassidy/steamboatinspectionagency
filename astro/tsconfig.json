@@ -7,9 +7,6 @@
     "lib": [
       "es2022"
     ],
-    "types": [
-      "vite/client",
-    ],
     "paths": {
       "@assets/*": [
         "assets/*"

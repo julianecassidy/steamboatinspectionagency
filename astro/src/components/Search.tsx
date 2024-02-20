@@ -1,6 +1,6 @@
 import type { Post } from "@config";
 import Fuse from "fuse.js";
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useRef, useState, useMemo, type InputHTMLAttributes } from "react";
 import Card from "@components/Card";
 
 export type SearchItem = {
@@ -25,8 +25,7 @@ export default function SearchBar({ searchList }: Props) {
     null
   );
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setInputVal(e.currentTarget.value);
   };
 
@@ -86,8 +85,14 @@ export default function SearchBar({ searchList }: Props) {
     border-opacity-40 bg-skin-fill py-3 pl-10
     pr-3 placeholder:italic placeholder:text-opacity-75
     focus:border-skin-accent focus:outline-none`,
+    placeholder: "Search for anything...",
+    type: "text",
+    name: "search",
+    value: inputVal,
     onChange: handleChange,
-    autoComplete: "off"
+    autoComplete: "off",
+    autoFocus: false,
+    ref: inputRef
   };
 
   const divProps = {
@@ -104,12 +109,6 @@ export default function SearchBar({ searchList }: Props) {
         </span>
         <input
           {...inputProps}
-          placeholder="Search for anything..."
-          type="text"
-          name="search"
-          value={inputVal}
-          autoFocus
-          ref={inputRef}
         />
       </label>
 

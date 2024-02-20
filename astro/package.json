@@ -11,7 +11,8 @@
     "format:check": "prettier --plugin-search-dir=. --check .",
     "format": "prettier --plugin-search-dir=. --write .",
     "cz": "cz",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "check": "astro check:"
   },
   "dependencies": {
     "@astrojs/check": "^0.2.1",
@@ -21,7 +22,6 @@
     "@resvg/resvg-js": "^2.4.1",
     "@sanity/astro": "^2.1.4",
     "@sanity/client": "^6.10.0",
-    "@types/lodash": "^4.14.202",
     "@types/lodash.debounce": "^4.0.9",
     "astro": "^3.6.4",
     "astro-sanity": "^1.1.7",
