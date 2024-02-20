@@ -86,6 +86,7 @@ export default function SearchBar({ searchList }: Props) {
     border-opacity-40 bg-skin-fill py-3 pl-10
     pr-3 placeholder:italic placeholder:text-opacity-75
     focus:border-skin-accent focus:outline-none`,
+    onChange: handleChange
   };
 
   const divProps = {
@@ -106,7 +107,6 @@ export default function SearchBar({ searchList }: Props) {
           type="text"
           name="search"
           value={inputVal}
-          onChange={handleChange}
           autoComplete="off"
           autoFocus
           ref={inputRef}
