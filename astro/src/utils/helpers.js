@@ -1,7 +1,8 @@
 // import { parseISO, format } from 'date-fns';
-import { useSanityClient, createImageBuilder} from 'astro-sanity';
+import imageUrlBuilder from "@sanity/image-url";
+import { sanityClient } from "sanity:client";
 
-const builder = createImageBuilder(useSanityClient());
+const builder = imageUrlBuilder(sanityClient);
 
 // NOTE: this functionality is currently handled with Datetime where the date is
 // rendered on the page.

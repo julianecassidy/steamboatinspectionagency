@@ -1,20 +1,21 @@
-<!-- ---
-import { getCollection } from "astro:content";
-import { SITE } from "@config";
+---
+import { SITE, type Post } from "@config";
 import Layout from "@layouts/Layout.astro";
 import Main from "@layouts/Main.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import SearchBar from "@components/Search";
+import { getAllPosts } from "lib/api";
+import { formatPostData } from "@utils/helpers.js";
 
 // Retrieve all articles
-const posts = await getCollection("blog", ({ data }) => !data.draft);
+const posts = formatPostData(await getAllPosts());
 
 // List of items to search in
-const searchList = posts.map(({ data }) => ({
-  title: data.title,
-  description: data.description,
-  data,
+const searchList = posts.map((post:Post) => ({
+  title: post.title,
+  description: post.description,
+  post,
 }));
 ---
 
@@ -24,4 +25,4 @@ const searchList = posts.map(({ data }) => ({
     <SearchBar client:load searchList={searchList} />
   </Main>
   <Footer />
-</Layout> -->
+</Layout>

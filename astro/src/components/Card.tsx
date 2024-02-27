@@ -1,9 +1,6 @@
 import { slugifyStr } from "@utils/slugify";
 import Datetime from "./Datetime";
 import { getSanityImageURL } from "@utils/helpers";
-import type React from "react";
-import type { HTMLAttributes } from "astro/types";
-import type { AnchorHTMLAttributes } from "react";
 
 export interface Props {
   href?: string;
@@ -15,6 +12,7 @@ export interface Props {
     mainImageAlt: string,
   };
   secHeading?: boolean;
+  key?: string;
 }
 
 export default function Card({ href, frontmatter, secHeading = true }: Props) {
@@ -51,7 +49,7 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
       {...linkProps}
     >
       <div {...divProps}>
-        <img 
+        <img
           src={getSanityImageURL(mainImage).width(288).height(240).fit("crop").url()}
           alt={mainImageAlt}
           {...imgProps}
